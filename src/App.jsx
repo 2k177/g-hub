@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./styles.css";
 import { useState } from "react";
 
 function App() {
@@ -26,20 +26,26 @@ function App() {
   };
 
   return (
-    <div>
-      <h2>Github API</h2>
-      <Form onChange={onSearchChange} onSubmit={onSearchSubmit} value={query} />
-      <h3>Results</h3>
-      <div>
-        {results.map((user) => (
-          <User
-            key={user.login}
-            avatar={user.avatar_url}
-            url={user.url}
-            username={user.login}
-          />
-        ))}
-      </div>
+    <div className="app">
+      <main className="main">
+        <h2>Github API</h2>
+        <Form
+          onChange={onSearchChange}
+          onSubmit={onSearchSubmit}
+          value={query}
+        />
+        <h3>Results</h3>
+        <div id="results">
+          {results.map((user) => (
+            <User
+              key={user.login}
+              avatar={user.avatar_url}
+              url={user.url}
+              username={user.login}
+            />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
@@ -48,7 +54,7 @@ export default App;
 
 function User({ avatar, url, username }) {
   return (
-    <div className="User">
+    <div className="user">
       <img src={avatar} alt="Profile" width="50" height="50" />
       <a href={url} target="_blank" rel="noopener noreferrer">
         {username}
